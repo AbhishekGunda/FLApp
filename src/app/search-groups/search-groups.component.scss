@@ -1,0 +1,52 @@
+.groups-wrapper {
+    padding: 0 9%;
+    background-color: #f3f5f6;
+    display: flex;
+    flex-wrap: wrap;
+
+    .single {
+        width: 30%;
+        background-color: white;
+        padding: 10px 25px 10px 0;
+        margin: 10px;
+
+        .fa {
+            color: #898989;
+        }
+
+        .avatar {
+            height: 70px;
+            width: 70px;
+            border-radius: 50%;
+            border: 1px solid gray;
+            // margin-top: 10px;
+
+        }
+
+        .middle {
+
+            h6,
+            p {
+                margin-bottom: 0 !important;
+            }
+        }
+
+        .join {
+            button {
+                background-color: #128fdc;
+                color: white;
+                outline: none;
+                border: none;
+                padding: 5px 20px;
+                display: flex;
+
+                .fa {
+                    position: relative;
+                    top: 5px;
+                    right: 3px;
+                    color: white !important;
+                }
+            }
+        }
+    }
+}

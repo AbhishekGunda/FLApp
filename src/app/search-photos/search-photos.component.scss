@@ -1,0 +1,12 @@
+.photos-wrapper {
+    padding: 1% 9%;
+    background-color: #f3f5f6;
+    display: flex;
+    flex-wrap: wrap;
+
+    .single-img {
+        height: 200px;
+        width: 200px;
+        padding: 5px;
+    }
+}

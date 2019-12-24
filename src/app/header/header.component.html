@@ -1,0 +1,18 @@
+<div class="mfs-header">
+    <div class="form-inline">
+        <i (click)="typeClicked('photos')" class="fa fa-search search" aria-hidden="true"></i>
+        <input class="form-control display-name" (keyup)="onKey($event)" [(ngModel)]="username"
+            (ngModelChnage)="onChange($event)" placeholder="Photos, People or Groups">
+        <div class="suggestions" *ngIf="showSuggestions">
+            <div (click)="typeClicked('photos')">
+                Photos
+            </div>
+            <!-- <div (click)="typeClicked('people')">
+                people
+            </div> -->
+            <div (click)="typeClicked('groups')">
+                Groups
+            </div>
+        </div>
+    </div>
+</div>

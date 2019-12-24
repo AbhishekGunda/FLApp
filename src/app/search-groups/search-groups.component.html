@@ -1,0 +1,25 @@
+<div class="groups-wrapper">
+    <div class="row single" *ngFor="let ele of groups">
+        <div class="col-lg-3">
+            <img class="avatar" src="{{ele.iconurls.default}}" alt="">
+        </div>
+        <div class="col-lg-6 middle">
+            <h6 class="grp-name">{{ele.name}}</h6>
+            <p>since 2015</p>
+            <span class="assests mr-2"><i class="fa fa-users mr-1" aria-hidden="true"></i>
+                <span>{{ele.members}}</span>
+            </span>
+            <span class="assests mr-2"><i class="fa fa-image mr-1" aria-hidden="true"></i>
+                <span>{{ele.pool_count}}</span>
+            </span>
+            <span class="assests mr-2"><i class="fa fa-comments mr-1" aria-hidden="true"></i>
+                <span>{{ele.topic_count}}</span>
+            </span>
+        </div>
+        <div class="col-lg-3 join">
+            <button>
+                <i class="fa fa-plus mr-1" aria-hidden="true"></i> Join
+            </button>
+        </div>
+    </div>
+</div>
