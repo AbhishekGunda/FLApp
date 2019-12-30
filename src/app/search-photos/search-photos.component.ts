@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiDataService } from '../api-data.service';
+import { Store } from '@ngrx/store';
+import { IAppState } from '../store/state/app.state';
+import * as Actions from '../store/actions/Pics.actions';
 
 @Component({
   selector: 'app-search-photos',
@@ -14,7 +17,9 @@ export class SearchPhotosComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private apiService: ApiDataService
+    private apiService: ApiDataService,
+    private store: Store<IAppState>
+
   ) { }
 
   ngOnInit() {
@@ -23,15 +28,24 @@ export class SearchPhotosComponent implements OnInit {
     });
 
     this.apiService.currentMessage.subscribe(temp => {
-      console.log(temp)
       this.apiService.fetchPhotos(temp || this.params.text).subscribe((data: any) => {
-        console.log(data);
-        data.photos.photo.forEach((element: any) => {
-          element.imgUrl = `https://farm${element.farm}.staticflickr.com/${element.server}/${element.id}_${element.secret}.jpg`
-        });
-        this.photos = data.photos.photo;
+        this.addPhotos(data.photos.photo);
       })
     })
+  }
+
+  addPhotos = (pics: Array<Object>) => {
+    this.store.dispatch(new Actions.AddSearchQueryPics(pics))
+    this.renderPhotos();
+  }
+
+  renderPhotos = () => {
+    this.store.select('recentPics').subscribe((data: any) => {
+      data.searchQueryPhotos.forEach((element: any) => {
+        element.imgUrl = `https://farm${element.farm}.staticflickr.com/${element.server}/${element.id}_${element.secret}.jpg`
+      });
+      this.photos = data.searchQueryPhotos
+    });
   }
 
 }
